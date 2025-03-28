@@ -13,6 +13,10 @@ class Article(models.Model):
     # 2. settings.py 변수 활용
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # 3. get_user_model
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    # user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     
-    
+    #댓글기능
+class Comment(models.Model):
+    content = models.TextField()
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    artlcle = models.ForeignKey(Article, on_delete=models.CASCADE)
